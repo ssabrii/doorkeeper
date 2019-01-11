@@ -11,6 +11,7 @@ rvm:
   - ruby-head
 
 before_install:
+  - travis_retry gem update --system || travis_retry gem update --system 2.7.8
   - gem install bundler -v '~> 1.10'
 
 gemfile:
@@ -27,10 +28,6 @@ matrix:
     - rvm: 2.5
       gemfile: gemfiles/rails_5_2.gemfile
       script: bundle exec danger
-    - rvm: 2.3
-      before_install:
-        - gem install bundler -v '1.17.3'
-      script: bundle _1.17.3_ exec rake
   exclude:
     - gemfile: gemfiles/rails_5_0.gemfile
       rvm: 2.1
