@@ -11,8 +11,9 @@ rvm:
   - ruby-head
 
 before_install:
-  - travis_retry gem update --system || travis_retry gem update --system 2.7.8
-  - gem install bundler -v '~> 1.10'
+  - gem install bundler -v '~> 1.17'
+
+script: bundle _1.17.3_ exec rake
 
 gemfile:
   - gemfiles/rails_4_2.gemfile
